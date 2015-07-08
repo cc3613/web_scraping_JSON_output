@@ -2,14 +2,16 @@ import urllib2, re, json
 from bs4 import BeautifulSoup
 
 #define url
-url='http://52.8.18.83/companies'
+
+#url taken out for confidentiality
+#url=
 
 #two things that need to be extracted, the link to each company's page, and the 
 #links to other 9 pages
 
 #for going to the next pages, since there are only total of 10 pages, simply
 #go from page 1 to page 10 will do the job
-#can use 'http://52.8.18.83/companies/'+'?page=*' where * goes from 1 to 10
+#can use url+'?page=*' where * goes from 1 to 10
 
 
 #extracting links
@@ -66,7 +68,8 @@ for page_num in range(1,11):
 	else:
 		#go to next page, then extract more links
 		#set the url to be the next page's url
-		url='http://52.8.18.83/companies'+'/?page='+str(page_num)
+		#url again taken out
+		#url=
 		comp_link_extract(url, link_extract)
 
 
@@ -75,7 +78,8 @@ with open('solution.json', 'wb') as output:
 	for i in range(len(link_extract)):
 		#getting url
 		#replacing ' ' with '%20'
-		url='http://52.8.18.83'+link_extract[i]
+		#url taken out
+		#url=some url+link_extract[i]
 		url='%20'.join(url.split(' '))
 		#feeding into comp_detail for extracting and converting
 		comp_detail(url, output)
